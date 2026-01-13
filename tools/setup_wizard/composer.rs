@@ -39,6 +39,7 @@ fn compose_main_table(settings: &Settings, credentials_path: &str, rules_path: &
         value(settings.get_tcp_connections_timeout().as_secs() as i64);
     doc["udp_connections_timeout_secs"] =
         value(settings.get_udp_connections_timeout().as_secs() as i64);
+    doc["speedtest_enable"] = value(*settings.get_speedtest_enable());
 
     doc.to_string()
 }

@@ -64,6 +64,9 @@ tcp_connections_timeout_secs = {}
 
 {}
 udp_connections_timeout_secs = {}
+
+{}
+speedtest_enable = {}
 "#,
         Settings::doc_listen_address().to_toml_comment(),
         crate::library_settings::DEFAULT_CREDENTIALS_PATH,
@@ -86,6 +89,8 @@ udp_connections_timeout_secs = {}
         Settings::default_tcp_connections_timeout().as_secs(),
         format!("{}. In seconds.", Settings::doc_udp_connections_timeout()).to_toml_comment(),
         Settings::default_udp_connections_timeout().as_secs(),
+        Settings::doc_speedtest_enable().to_toml_comment(),
+        Settings::default_speedtest_enable(),
     )
 });
 

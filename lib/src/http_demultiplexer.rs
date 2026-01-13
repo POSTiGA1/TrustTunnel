@@ -44,6 +44,9 @@ impl HttpDemux {
     }
 
     fn check_speedtest(&self, request: &http_codec::RequestHeaders) -> bool {
+        if !self.core_settings.speedtest_enable {
+            return false;
+        }
         request
             .uri
             .path()

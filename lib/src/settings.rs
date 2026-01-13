@@ -168,6 +168,10 @@ pub struct Settings {
     #[serde(deserialize_with = "deserialize_rules")]
     pub(crate) rules_engine: Option<rules::RulesEngine>,
 
+    /// Whether speedtest is available on the main hosts via `/speed` path.
+    #[serde(default = "Settings::default_speedtest_enable")]
+    pub(crate) speedtest_enable: bool,
+
     /// Whether an instance was built through a [`SettingsBuilder`].
     /// This flag is a workaround for absence of the ability to validate
     /// the deserialized structure.
@@ -510,6 +514,10 @@ impl Settings {
     pub fn default_udp_connections_timeout() -> Duration {
         Duration::from_secs(300) // 5 minutes (match client tcpip module)
     }
+
+    pub fn default_speedtest_enable() -> bool {
+        false
+    }
 }
 
 #[cfg(test)]
@@ -535,6 +543,7 @@ impl Default for Settings {
             icmp: None,
             metrics: Default::default(),
             rules_engine: Some(rules::RulesEngine::default_allow()),
+            speedtest_enable: false,
             built: false,
         }
     }
@@ -784,6 +793,7 @@ impl SettingsBuilder {
                 icmp: None,
                 metrics: Default::default(),
                 rules_engine: Some(rules::RulesEngine::default_allow()),
+                speedtest_enable: Settings::default_speedtest_enable(),
                 built: true,
             },
         }
@@ -896,6 +906,12 @@ impl SettingsBuilder {
     /// Set the rules engine for connection filtering
     pub fn rules_engine(mut self, x: rules::RulesEngine) -> Self {
         self.settings.rules_engine = Some(x);
+        self
+    }
+
+    /// Set whether speedtest is available
+    pub fn speedtest_enable(mut self, x: bool) -> Self {
+        self.settings.speedtest_enable = x;
         self
     }
 }

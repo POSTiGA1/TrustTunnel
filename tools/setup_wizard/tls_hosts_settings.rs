@@ -114,18 +114,6 @@ fn build_settings_from_cert(cert: Cert) -> TlsHostsSettings {
             private_key_path: cert.key_path.clone(),
             allowed_sni,
         }])
-        .ping_hosts(vec![TlsHostInfo {
-            hostname: format!("ping.{}", hostname),
-            cert_chain_path: cert.cert_path.clone(),
-            private_key_path: cert.key_path.clone(),
-            allowed_sni: vec![],
-        }])
-        .speedtest_hosts(vec![TlsHostInfo {
-            hostname: format!("speed.{}", hostname),
-            cert_chain_path: cert.cert_path.clone(),
-            private_key_path: cert.key_path.clone(),
-            allowed_sni: vec![],
-        }])
         .build()
         .expect("Couldn't build TLS hosts settings")
 }

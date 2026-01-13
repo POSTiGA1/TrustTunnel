@@ -202,6 +202,7 @@ pub async fn run_endpoint(listen_address: &SocketAddr) {
             quic: Some(QuicSettings::builder().build()),
         })
         .allow_private_network_connections(true)
+        .speedtest_enable(true)
         .build()
         .unwrap();
 
