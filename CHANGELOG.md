@@ -1,5 +1,7 @@
 # CHANGELOG
 
+## 0.9.122
+
 - Endpoint now requires credentials when listening on a public address.
 - Added support of shortened QUIC settings names in configuration files.
 
