@@ -8,13 +8,13 @@
 ## 0.9.115
 
 - Fixed an issue where `client_random_prefix` rules didn’t match when Anti-DPI or post-quantum cryptography was enabled.
-  *(Credits pending)*
+  (https://github.com/TrustTunnel/TrustTunnel/security/advisories/GHSA-fqh7-r5gf-3r87)
 
 ## 0.9.114
 
 - Fixed an issue where `allow_private_network_connections` set to false could be bypassed
 when a numeric address was used.
-  *(Credits pending)*
+  (https://github.com/TrustTunnel/TrustTunnel/security/advisories/GHSA-hgr9-frvw-5r76)
 
 ## 0.9.87
 
